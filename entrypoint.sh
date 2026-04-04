@@ -15,17 +15,21 @@ generate_diagram() {
     local source_dir="$1"
     local diagram_name="$2"
     local uml_file="$output_folder/$diagram_name.uml"
-    local generated_puml="$output_folder/$diagram_name.puml"
+    local temp_dir
 
-    puml-gen "$source_dir" "$generated_puml" \
+    temp_dir=$(mktemp -d /tmp/dotnet-diagram.XXXXXX)
+
+    puml-gen "$source_dir" "$temp_dir" -dir -allInOne \
       -createAssociation -excludePaths bin,obj,Properties -public \
       || echo "⚠ uml generation failed: $diagram_name"
 
-    if [ -f "$generated_puml" ]; then
-        mv "$generated_puml" "$uml_file"
+    if [ -f "$temp_dir/include.puml" ]; then
+        mv "$temp_dir/include.puml" "$uml_file"
         plantuml -tsvg "$uml_file" || echo "⚠ svg generation failed: $diagram_name"
         generated_any=true
     fi
+
+    rm -rf "$temp_dir"
 }
 
 # =========================
