@@ -5,7 +5,7 @@ author: '@sator-imaging'
 # Ref: https://haya14busa.github.io/github-action-brandings/
 branding:
   icon: 'share-2'
-  color: 'blue'
+  color: 'purple'
 
 inputs:
   projects:

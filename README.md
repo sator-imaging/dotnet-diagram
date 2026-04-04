@@ -1,3 +1,15 @@
+<div align="center">
+
+# `dotnet-diagram`
+
+Generates UML+SVG Class Diagrams per `.csproj`
+
+</div>
+
+
+
+
+
 # Basic Usage
 
 `dotnet-diagram` generates `README.md` and corresponding files to output folder (defaults to `UML`).
