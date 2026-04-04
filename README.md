@@ -28,9 +28,10 @@ on:
 
 jobs:
   diagram:
-    runs-on: ubuntu-slim  # or ubuntu-latest
+    runs-on: ubuntu-latest  # or ubuntu-slim
 
     # Permissions required for creating PR
+    # Note: Update repo setting to allow GitHub Actions to create PR
     permissions:
       contents: write
       pull-requests: write
