@@ -47,7 +47,7 @@ jobs:
 
           git checkout -b $BRANCH
           git add .
-          git commit -m "[bot] ${{ github.workflow }} ($(date +'%Y%m%d%H%M%S'))" \
+          git commit -m "[bot] ${{ github.workflow }} ($(date +'%Y-%m-%d %H:%M:%S'))" \
             || exit 0
           git push origin $BRANCH
 
