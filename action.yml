@@ -1,5 +1,5 @@
 name: '.NET Diagram Generator'
-description: 'Generate UML and Mermaid class diagrams for .NET repositories.'
+description: 'GitHub Action to generate UML class diagrams for .NET repositories.'
 author: '@sator-imaging'
 
 # Ref: https://haya14busa.github.io/github-action-brandings/
