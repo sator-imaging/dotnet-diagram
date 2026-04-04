@@ -17,7 +17,7 @@ generate_diagram() {
     local uml_file="$output_folder/$diagram_name.uml"
     local generated_puml="$output_folder/$diagram_name.puml"
 
-    puml-gen "$source_dir" "$output_folder" -dir -allInOne \
+    puml-gen "$source_dir" "$generated_puml" \
       -createAssociation -excludePaths bin,obj,Properties -public \
       || echo "⚠ uml generation failed: $diagram_name"
 
