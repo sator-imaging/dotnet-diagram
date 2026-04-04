@@ -1,0 +1,55 @@
+name: '.NET Diagram Generator'
+description: 'Generate UML and Mermaid class diagrams for .NET repositories.'
+author: '@sator-imaging'
+
+# Ref: https://haya14busa.github.io/github-action-brandings/
+branding:
+  icon: 'share-2'
+  color: 'blue'
+
+inputs:
+  projects:
+    description: 'Glob for csproj files'
+    default: '**/*.csproj'
+  output-folder:
+    description: 'Output folder'
+    default: 'UML'
+  fallback-to-cs:
+    description: 'Fallback to .cs files if no csproj found'
+    default: 'true'
+
+outputs:
+  readme-path:
+    description: 'Path to generated UML README'
+    value: ${{ steps.set-output.outputs.readme }}
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # 6.0.2
+
+    - uses: actions/setup-dotnet@c2fa09f4bde5ebb9d1777cf28262a3eb3db3ced7  # v5.2.0
+      with:
+        dotnet-version: '8.x.x'  # For PlantUmlClassDiagramGenerator 
+
+    - run: sudo apt-get update && sudo apt-get install -y plantuml graphviz
+      shell: bash
+
+    - run: dotnet tool install --global PlantUmlClassDiagramGenerator --version 1.4.0
+      shell: bash
+
+    - name: Generate UML
+      id: generate
+      shell: bash
+      run: |
+        export PATH="$PATH:$HOME/.dotnet/tools"
+        bash $GITHUB_ACTION_PATH/entrypoint.sh \
+          "${{ inputs.projects }}" \
+          "${{ inputs.output-folder }}" \
+          "${{ inputs.fallback-to-cs }}"
+
+    - name: Set output
+      id: set-output
+      shell: bash
+      run: |
+        echo "readme=${{ inputs.output-folder }}/README.md" >> $GITHUB_OUTPUT
