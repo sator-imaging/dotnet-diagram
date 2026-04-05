@@ -111,4 +111,6 @@ jobs:
 
 ## Themes
 
+Currently `mars` is only supported.
+
 Reference: https://the-lum.github.io/puml-themes-gallery/themes/index.html
