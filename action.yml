@@ -11,9 +11,6 @@ inputs:
   output-dir:
     description: 'Relative output directory'
     default: 'UML'
-  embed-svg:
-    description: 'Embed SVG in README as base64 data URI'
-    default: 'true'
 
 outputs:
   readme-path:
@@ -41,8 +38,7 @@ runs:
       run: |
         export PATH="$PATH:$HOME/.dotnet/tools"
         bash $GITHUB_ACTION_PATH/entrypoint.sh \
-          "${{ inputs.output-dir }}" \
-          "${{ inputs.embed-svg }}"
+          "${{ inputs.output-dir }}"
 
     - name: Set output
       id: set-output

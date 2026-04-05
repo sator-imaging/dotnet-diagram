@@ -2,7 +2,7 @@
 
 # `dotnet-diagram`
 
-Generates UML+SVG Class Diagrams per `.csproj`
+Generates UML+SVG class diagrams per `.csproj`
 
 </div>
 
@@ -12,9 +12,9 @@ Generates UML+SVG Class Diagrams per `.csproj`
 
 # Basic Usage
 
-`dotnet-diagram` generates `README.md` and corresponding files to output folder (defaults to `UML`).
+`dotnet-diagram` generates `README.md`, `index.html`, and corresponding diagram files in the output directory (defaults to `UML`).
 
-The following example writes README content including embedded SVG on pull requests and diffs to GitHub action step summary, and then creates a PR when the event is a push to `main`.
+The following example writes generated Markdown content to GitHub Actions step summary, and then creates a PR when the event is not `pull_request`.
 
 ```yaml
 name: 'Generate Class Diagrams'
@@ -47,16 +47,22 @@ jobs:
 
       - id: diagram
         uses: sator-imaging/dotnet-diagram@v1
-        with:
-          embed-svg: ${{ github.event_name == 'push' && 'false' || 'true' }}
 
 
       - name: Step Summary
         run: cat "${{ steps.diagram.outputs.readme-path }}" >> $GITHUB_STEP_SUMMARY
 
+      - name: Upload HTML Artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: dotnet-diagram-html
+          path: UML/index.html
+          archive: false
+          if-no-files-found: error
+
 
       - name: Create PR
-        if: github.event_name == 'push'
+        if: github.event_name != 'pull_request'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
