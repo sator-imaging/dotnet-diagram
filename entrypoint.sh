@@ -42,10 +42,7 @@ generate_diagram() {
     local render_file
     local theme_file
     local script_dir
-    local puml_gen_args=(
-        "$source_dir" "$temp_dir" -dir -allInOne
-        -createAssociation -excludePaths bin,obj,Properties
-    )
+    local public_flag=""
 
     temp_dir=$(mktemp -d /tmp/dotnet-diagram.XXXXXX)
     render_file="$uml_file"
@@ -53,10 +50,11 @@ generate_diagram() {
     theme_file="$script_dir/themes/$theme.puml"
 
     if [ "$public_only" = "true" ]; then
-        puml_gen_args+=(-public)
+        public_flag="-public"
     fi
 
-    puml-gen "${puml_gen_args[@]}" \
+    puml-gen "$source_dir" "$temp_dir" -dir -allInOne \
+      -createAssociation -excludePaths bin,obj,Properties $public_flag \
       || echo "⚠ uml generation failed: $diagram_name"
 
     if [ -f "$temp_dir/include.puml" ]; then
