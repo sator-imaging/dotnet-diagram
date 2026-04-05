@@ -2,31 +2,13 @@
 set -e
 
 output_folder="${1:-UML}"
-theme="${2:-bluegray}"
+theme="${2:-_none_}"
 
 mkdir -p "$output_folder"
 
 csproj_list=$(find . -name "*.csproj")
 
 generated_any=false
-
-apply_theme() {
-    local uml_file="$1"
-    local themed_file
-
-    themed_file=$(mktemp /tmp/dotnet-diagram-theme.XXXXXX)
-
-    awk -v theme="$theme" '
-        NR == 1 && $0 == "@startuml" {
-            print
-            print "!theme " theme
-            next
-        }
-        { print }
-    ' "$uml_file" > "$themed_file"
-
-    mv "$themed_file" "$uml_file"
-}
 
 generate_diagram() {
     local source_dir="$1"
@@ -42,8 +24,7 @@ generate_diagram() {
 
     if [ -f "$temp_dir/include.puml" ]; then
         mv "$temp_dir/include.puml" "$uml_file"
-        apply_theme "$uml_file"
-        plantuml -tsvg "$uml_file" || echo "⚠ svg generation failed: $diagram_name"
+        plantuml --theme "$theme" -tsvg "$uml_file" || echo "⚠ svg generation failed: $diagram_name"
         generated_any=true
     fi
 

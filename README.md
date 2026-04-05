@@ -99,10 +99,16 @@ jobs:
 | Input | Default | Description |
 | --- | --- | --- |
 | `output-dir` | `UML` | Relative output directory for generated files. |
-| `theme` | `bluegray` | PlantUML theme applied before SVG rendering. |
+| `theme` | `_none_` | PlantUML CLI theme used during SVG rendering. |
 
 | Output | Description |
 | --- | --- |
 | `readme-path` | Path to the generated Markdown summary file. |
 | `html-path` | Path to the generated HTML page with base64-embedded SVG. |
 | `diff-path` | Path to the generated Markdown diff file. |
+
+
+
+## Themes
+
+Reference: https://the-lum.github.io/puml-themes-gallery/themes/index.html

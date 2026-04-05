@@ -13,7 +13,7 @@ inputs:
     default: 'UML'
   theme:
     description: 'PlantUML theme name'
-    default: 'bluegray'
+    default: '_none_'
 
 outputs:
   readme-path:
