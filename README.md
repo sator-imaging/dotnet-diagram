@@ -48,7 +48,7 @@ jobs:
       - id: diagram
         uses: sator-imaging/dotnet-diagram@v1
         with:
-          embed-svg: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
+          embed-svg: ${{ github.event_name == 'push' && 'false' || 'true' }}
 
 
       - name: Step Summary
