@@ -1,4 +1,7 @@
 // Expect no UML generated for this folder
-private class PrivateClass
+namespace Private
 {
+    private class PrivateClass
+    {
+    }
 }
