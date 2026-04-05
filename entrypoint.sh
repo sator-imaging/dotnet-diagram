@@ -2,7 +2,7 @@
 set -e
 
 output_folder="${1:-UML}"
-theme="${2:-_none_}"
+theme="${2:-}"
 
 mkdir -p "$output_folder"
 
@@ -24,7 +24,7 @@ generate_diagram() {
 
     if [ -f "$temp_dir/include.puml" ]; then
         mv "$temp_dir/include.puml" "$uml_file"
-        plantuml --theme "$theme" -tsvg "$uml_file" || echo "⚠ svg generation failed: $diagram_name"
+        plantuml -tsvg --theme "$theme" "$uml_file" || echo "⚠ svg generation failed: $diagram_name"
         generated_any=true
     fi
 
@@ -120,18 +120,26 @@ EOF
 
 git fetch origin main || true
 
+found_any=false
+
+uml_diff=$(git diff origin/main -- "$output_folder"/*.uml || true)
+if [ -n "$uml_diff" ]; then
+    found_any=true
+    echo '```diff' >> "$DIFF_MD"
+    echo "$uml_diff" >> "$DIFF_MD"
+    echo '```' >> "$DIFF_MD"
+    echo "" >> "$DIFF_MD"
+fi
+
 echo "" >> "$DIFF_MD"
 echo "" >> "$INDEX_HTML"
 
 # =========================
 # Embed csproj diagrams
 # =========================
-found_any=false
-
 for svg in "$output_folder"/*.svg; do
     [ -f "$svg" ] || continue
 
-    found_any=true
     name=$(basename "$svg" .svg)
     uml_file="$output_folder/$name.uml"
 
@@ -162,6 +170,7 @@ for svg in "$output_folder"/*.svg; do
     file_diff=$(git diff origin/main -- "$uml_file" || true)
 
     if [ -n "$file_diff" ]; then
+        found_any=true
         echo "# $name" >> "$DIFF_MD"
         echo "" >> "$DIFF_MD"
         echo '```diff' >> "$DIFF_MD"

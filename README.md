@@ -99,7 +99,7 @@ jobs:
 | Input | Default | Description |
 | --- | --- | --- |
 | `output-dir` | `UML` | Relative output directory for generated files. |
-| `theme` | `_none_` | PlantUML CLI theme used during SVG rendering. |
+| `theme` | `''` | PlantUML CLI theme used during SVG rendering. |
 
 | Output | Description |
 | --- | --- |
