@@ -34,11 +34,9 @@ jobs:
 
       - name: Debug SVG
         run: |
-          ls -lR
-
-          if [ -f UML/Test.svg ]; then
+          if [ -f UML/Tests.svg ]; then
             echo '```svg' >> $GITHUB_STEP_SUMMARY
-            cat UML/Test.svg >> $GITHUB_STEP_SUMMARY
+            cat UML/Tests.svg >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
           fi
 
