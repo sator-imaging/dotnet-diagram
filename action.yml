@@ -18,7 +18,7 @@ inputs:
     description: 'Use left-to-right UML layout'
     default: 'true'
   public-only:
-    description: 'Generate public-only UML'
+    description: 'Generate public-only diagrams'
     default: 'true'
 
 outputs:
