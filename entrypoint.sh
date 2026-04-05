@@ -4,6 +4,7 @@ set -e
 output_folder="${1:-UML}"
 theme="${2:-mars}"
 left_to_right="${3:-true}"
+public_only="${4:-true}"
 
 mkdir -p "$output_folder"
 
@@ -41,14 +42,21 @@ generate_diagram() {
     local render_file
     local theme_file
     local script_dir
+    local puml_gen_args=(
+        "$source_dir" "$temp_dir" -dir -allInOne
+        -createAssociation -excludePaths bin,obj,Properties
+    )
 
     temp_dir=$(mktemp -d /tmp/dotnet-diagram.XXXXXX)
     render_file="$uml_file"
     script_dir=$(cd "$(dirname "$0")" && pwd)
     theme_file="$script_dir/themes/$theme.puml"
 
-    puml-gen "$source_dir" "$temp_dir" -dir -allInOne \
-      -createAssociation -excludePaths bin,obj,Properties -public \
+    if [ "$public_only" = "true" ]; then
+        puml_gen_args+=(-public)
+    fi
+
+    puml-gen "${puml_gen_args[@]}" \
       || echo "⚠ uml generation failed: $diagram_name"
 
     if [ -f "$temp_dir/include.puml" ]; then

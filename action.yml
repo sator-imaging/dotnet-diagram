@@ -17,6 +17,9 @@ inputs:
   left-to-right:
     description: 'Use left-to-right UML layout'
     default: 'true'
+  public-only:
+    description: 'Generate public-only UML'
+    default: 'true'
 
 outputs:
   readme-path:
@@ -52,7 +55,8 @@ runs:
         bash $GITHUB_ACTION_PATH/entrypoint.sh \
           "${{ inputs.output-dir }}" \
           "${{ inputs.theme }}" \
-          "${{ inputs.left-to-right }}"
+          "${{ inputs.left-to-right }}" \
+          "${{ inputs.public-only }}"
 
     - name: Set output
       id: set-output
