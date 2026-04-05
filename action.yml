@@ -13,7 +13,7 @@ inputs:
     default: 'UML'
   theme:
     description: 'PlantUML theme name'
-    default: ''
+    default: 'mars'
 
 outputs:
   readme-path:

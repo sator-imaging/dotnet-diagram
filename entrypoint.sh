@@ -2,7 +2,7 @@
 set -e
 
 output_folder="${1:-UML}"
-theme="${2:-}"
+theme="${2:-mars}"
 
 mkdir -p "$output_folder"
 
@@ -173,10 +173,19 @@ for svg in "$output_folder"/*.svg; do
         found_any=true
         echo "# $name" >> "$DIFF_MD"
         echo "" >> "$DIFF_MD"
+        echo "<details>" >> "$DIFF_MD"
+        echo "<summary>Diff</summary>" >> "$DIFF_MD"
+        echo "" >> "$DIFF_MD"
         echo '```diff' >> "$DIFF_MD"
         echo "$file_diff" >> "$DIFF_MD"
         echo '```' >> "$DIFF_MD"
+        echo "</details>" >> "$DIFF_MD"
         echo "" >> "$DIFF_MD"
+
+        echo "    <details>" >> "$INDEX_HTML"
+        echo "      <summary>Diff</summary>" >> "$INDEX_HTML"
+        echo "      <pre><code>$(printf '%s' "$file_diff" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')</code></pre>" >> "$INDEX_HTML"
+        echo "    </details>" >> "$INDEX_HTML"
     fi
 done
 
@@ -184,11 +193,7 @@ done
 # Fallback for nothing
 # =========================
 if [ "$found_any" = false ]; then
-    echo "_No changes_" >> "$README"
-    echo "_No UML diagrams generated_" >> "$README"
     echo "_No changes_" >> "$DIFF_MD"
-    echo "  <p><em>No changes</em></p>" >> "$INDEX_HTML"
-    echo "  <p><em>No UML diagrams generated</em></p>" >> "$INDEX_HTML"
 fi
 
 echo "</body>" >> "$INDEX_HTML"
