@@ -14,7 +14,13 @@ Generates UML+SVG class diagrams per `.csproj`
 
 `dotnet-diagram` generates `README.md`, `index.html`, and corresponding diagram files in the output directory (defaults to `UML`).
 
-The following example writes generated Markdown content to GitHub Actions step summary, and then creates a PR when the event is not `pull_request`.
+- README.md
+- DIFF.md
+- index.html
+- UML
+- SVG
+
+The following example writes generated DIFF content to GitHub Actions step summary, and then creates a PR when the event is not `pull_request`.
 
 ```yaml
 name: 'Generate Class Diagrams'
@@ -50,7 +56,7 @@ jobs:
 
 
       - name: Step Summary
-        run: cat "${{ steps.diagram.outputs.readme-path }}" >> $GITHUB_STEP_SUMMARY
+        run: cat "${{ steps.diagram.outputs.diff-path }}" >> $GITHUB_STEP_SUMMARY
 
       - name: Upload HTML Artifact
         uses: actions/upload-artifact@v7
@@ -83,3 +89,20 @@ jobs:
             --base main \
             --head $BRANCH
 ```
+
+
+
+
+
+# Options and Outputs
+
+| Input | Default | Description |
+| --- | --- | --- |
+| `output-dir` | `UML` | Relative output directory for generated files. |
+| `theme` | `bluegray` | PlantUML theme applied before SVG rendering. |
+
+| Output | Description |
+| --- | --- |
+| `readme-path` | Path to the generated Markdown summary file. |
+| `html-path` | Path to the generated HTML page with base64-embedded SVG. |
+| `diff-path` | Path to the generated Markdown diff file. |

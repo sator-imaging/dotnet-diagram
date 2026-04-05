@@ -11,11 +11,20 @@ inputs:
   output-dir:
     description: 'Relative output directory'
     default: 'UML'
+  theme:
+    description: 'PlantUML theme name'
+    default: 'bluegray'
 
 outputs:
   readme-path:
     description: 'Path to generated UML README'
     value: ${{ steps.set-output.outputs.readme }}
+  html-path:
+    description: 'Path to generated HTML diagram page'
+    value: ${{ steps.set-output.outputs.html }}
+  diff-path:
+    description: 'Path to generated Markdown diff file'
+    value: ${{ steps.set-output.outputs.diff }}
 
 runs:
   using: 'composite'
@@ -38,10 +47,13 @@ runs:
       run: |
         export PATH="$PATH:$HOME/.dotnet/tools"
         bash $GITHUB_ACTION_PATH/entrypoint.sh \
-          "${{ inputs.output-dir }}"
+          "${{ inputs.output-dir }}" \
+          "${{ inputs.theme }}"
 
     - name: Set output
       id: set-output
       shell: bash
       run: |
         echo "readme=${{ inputs.output-dir }}/README.md" >> $GITHUB_OUTPUT
+        echo "html=${{ inputs.output-dir }}/index.html" >> $GITHUB_OUTPUT
+        echo "diff=${{ inputs.output-dir }}/DIFF.md" >> $GITHUB_OUTPUT
