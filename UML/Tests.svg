@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="343px" preserveAspectRatio="none" style="width:399px;height:343px;background:#F9F9F9;" version="1.1" viewBox="0 0 399 343" width="399px" zoomAndPan="magnify"><defs/><g><!--MD5=[ca66430013dec83b1dbf950cee73fbca]
+class ClassA--><rect fill="#F1F1F1" height="48" id="ClassA" rx="3.5" ry="3.5" style="stroke: #BBBBBB; stroke-width: 1.5;" width="73" x="87.5" y="201"/><ellipse cx="102.5" cy="217" fill="#ADD1B2" rx="11" ry="11" style="stroke: #BBBBBB; stroke-width: 1.0;"/><path d="M105.4688,222.6406 Q104.8906,222.9375 104.25,223.0781 Q103.6094,223.2344 102.9063,223.2344 Q100.4063,223.2344 99.0781,221.5938 Q97.7656,219.9375 97.7656,216.8125 Q97.7656,213.6875 99.0781,212.0313 Q100.4063,210.375 102.9063,210.375 Q103.6094,210.375 104.25,210.5313 Q104.9063,210.6875 105.4688,210.9844 L105.4688,213.7031 Q104.8438,213.125 104.25,212.8594 Q103.6563,212.5781 103.0313,212.5781 Q101.6875,212.5781 101,213.6563 Q100.3125,214.7188 100.3125,216.8125 Q100.3125,218.9063 101,219.9844 Q101.6875,221.0469 103.0313,221.0469 Q103.6563,221.0469 104.25,220.7813 Q104.8438,220.5 105.4688,219.9219 L105.4688,222.6406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="41" x="116.5" y="221.1543">ClassA</text><line style="stroke: #BBBBBB; stroke-width: 1.5;" x1="88.5" x2="159.5" y1="233" y2="233"/><line style="stroke: #BBBBBB; stroke-width: 1.5;" x1="88.5" x2="159.5" y1="241" y2="241"/><!--MD5=[f64054642b4cfbd30c6933927ef3d140]
+class Type1--><rect fill="#F1F1F1" height="60.8047" id="Type1" rx="3.5" ry="3.5" style="stroke: #BBBBBB; stroke-width: 1.5;" width="162" x="43" y="104.5"/><ellipse cx="101.25" cy="120.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #BBBBBB; stroke-width: 1.0;"/><path d="M104.2188,126.1406 Q103.6406,126.4375 103,126.5781 Q102.3594,126.7344 101.6563,126.7344 Q99.1563,126.7344 97.8281,125.0938 Q96.5156,123.4375 96.5156,120.3125 Q96.5156,117.1875 97.8281,115.5313 Q99.1563,113.875 101.6563,113.875 Q102.3594,113.875 103,114.0313 Q103.6563,114.1875 104.2188,114.4844 L104.2188,117.2031 Q103.5938,116.625 103,116.3594 Q102.4063,116.0781 101.7813,116.0781 Q100.4375,116.0781 99.75,117.1563 Q99.0625,118.2188 99.0625,120.3125 Q99.0625,122.4063 99.75,123.4844 Q100.4375,124.5469 101.7813,124.5469 Q102.4063,124.5469 103,124.2813 Q103.5938,124 104.2188,123.4219 L104.2188,126.1406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="37" x="121.75" y="124.6543">Type1</text><line style="stroke: #BBBBBB; stroke-width: 1.5;" x1="44" x2="204" y1="136.5" y2="136.5"/><ellipse cx="54" cy="147.5" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="136" x="63" y="150.7104">Value1 : int «get» «set»</text><line style="stroke: #BBBBBB; stroke-width: 1.5;" x1="44" x2="204" y1="157.3047" y2="157.3047"/><!--MD5=[53dcf64242be60c66f8dc78eb63950fa]
+class Type2--><rect fill="#F1F1F1" height="60.8047" id="Type2" rx="3.5" ry="3.5" style="stroke: #BBBBBB; stroke-width: 1.5;" width="184" x="32" y="8.5"/><ellipse cx="101.25" cy="24.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #BBBBBB; stroke-width: 1.0;"/><path d="M104.2188,30.1406 Q103.6406,30.4375 103,30.5781 Q102.3594,30.7344 101.6563,30.7344 Q99.1563,30.7344 97.8281,29.0938 Q96.5156,27.4375 96.5156,24.3125 Q96.5156,21.1875 97.8281,19.5313 Q99.1563,17.875 101.6563,17.875 Q102.3594,17.875 103,18.0313 Q103.6563,18.1875 104.2188,18.4844 L104.2188,21.2031 Q103.5938,20.625 103,20.3594 Q102.4063,20.0781 101.7813,20.0781 Q100.4375,20.0781 99.75,21.1563 Q99.0625,22.2188 99.0625,24.3125 Q99.0625,26.4063 99.75,27.4844 Q100.4375,28.5469 101.7813,28.5469 Q102.4063,28.5469 103,28.2813 Q103.5938,28 104.2188,27.4219 L104.2188,30.1406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="37" x="121.75" y="28.6543">Type2</text><line style="stroke: #BBBBBB; stroke-width: 1.5;" x1="33" x2="215" y1="40.5" y2="40.5"/><ellipse cx="43" cy="51.5" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="158" x="52" y="54.7104">String1 : string «get» «set»</text><line style="stroke: #BBBBBB; stroke-width: 1.5;" x1="33" x2="215" y1="61.3047" y2="61.3047"/><!--MD5=[e86cb3152b373893f72577900da131c9]
+class IList`1--><rect fill="#F1F1F1" height="48" id="IList`1" rx="3.5" ry="3.5" style="stroke: #BBBBBB; stroke-width: 1.5;" width="81" x="83.5" y="284"/><ellipse cx="98.5" cy="300" fill="#ADD1B2" rx="11" ry="11" style="stroke: #BBBBBB; stroke-width: 1.0;"/><path d="M101.4688,305.6406 Q100.8906,305.9375 100.25,306.0781 Q99.6094,306.2344 98.9063,306.2344 Q96.4063,306.2344 95.0781,304.5938 Q93.7656,302.9375 93.7656,299.8125 Q93.7656,296.6875 95.0781,295.0313 Q96.4063,293.375 98.9063,293.375 Q99.6094,293.375 100.25,293.5313 Q100.9063,293.6875 101.4688,293.9844 L101.4688,296.7031 Q100.8438,296.125 100.25,295.8594 Q99.6563,295.5781 99.0313,295.5781 Q97.6875,295.5781 97,296.6563 Q96.3125,297.7188 96.3125,299.8125 Q96.3125,301.9063 97,302.9844 Q97.6875,304.0469 99.0313,304.0469 Q99.6563,304.0469 100.25,303.7813 Q100.8438,303.5 101.4688,302.9219 L101.4688,305.6406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="38" x="112.5" y="304.1543">IList`1</text><rect fill="#F9F9F9" height="15.9688" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" width="9" x="158.5" y="281"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="7" x="159.5" y="293.1387">T</text><line style="stroke: #BBBBBB; stroke-width: 1.5;" x1="84.5" x2="163.5" y1="316" y2="316"/><line style="stroke: #BBBBBB; stroke-width: 1.5;" x1="84.5" x2="163.5" y1="324" y2="324"/><!--MD5=[654b698ff3f10acf0305479b509fdd4b]
+class ExternalType--><rect fill="#F1F1F1" height="48" id="ExternalType" rx="3.5" ry="3.5" style="stroke: #BBBBBB; stroke-width: 1.5;" width="112" x="276" y="15"/><ellipse cx="291" cy="31" fill="#ADD1B2" rx="11" ry="11" style="stroke: #BBBBBB; stroke-width: 1.0;"/><path d="M293.9688,36.6406 Q293.3906,36.9375 292.75,37.0781 Q292.1094,37.2344 291.4063,37.2344 Q288.9063,37.2344 287.5781,35.5938 Q286.2656,33.9375 286.2656,30.8125 Q286.2656,27.6875 287.5781,26.0313 Q288.9063,24.375 291.4063,24.375 Q292.1094,24.375 292.75,24.5313 Q293.4063,24.6875 293.9688,24.9844 L293.9688,27.7031 Q293.3438,27.125 292.75,26.8594 Q292.1563,26.5781 291.5313,26.5781 Q290.1875,26.5781 289.5,27.6563 Q288.8125,28.7188 288.8125,30.8125 Q288.8125,32.9063 289.5,33.9844 Q290.1875,35.0469 291.5313,35.0469 Q292.1563,35.0469 292.75,34.7813 Q293.3438,34.5 293.9688,33.9219 L293.9688,36.6406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="80" x="305" y="35.1543">ExternalType</text><line style="stroke: #BBBBBB; stroke-width: 1.5;" x1="277" x2="387" y1="47" y2="47"/><line style="stroke: #BBBBBB; stroke-width: 1.5;" x1="277" x2="387" y1="55" y2="55"/><!--MD5=[6afba4bfb334a7b5cde3e799fc122c19]
+link ClassA to IList`1--><path d="M124,261.3 C124,261.3 124,267.87 124,270.52 " fill="none" id="ClassA-IList`1" style="stroke: #191919; stroke-width: 1.0;"/><polygon fill="#191919" points="124,283.68,128,274.68,124,278.68,120,274.68,124,283.68" style="stroke: #191919; stroke-width: 1.0;"/><line style="stroke: #191919; stroke-width: 1.0;" x1="124" x2="124" y1="278.68" y2="270.68"/><polygon fill="#F9F9F9" points="124,249.3,120,255.3,124,261.3,128,255.3,124,249.3" style="stroke: #191919; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="103" x="8.4469" y="273.007">Strings&lt;string&gt;</text><!--MD5=[706da74ec5aa8616b22b69563c55ddc2]
+link Type2 to ExternalType--><path d="M216.25,39 C234.69,39 253.63,39 270.68,39 " fill="none" id="Type2-&gt;ExternalType" style="stroke: #191919; stroke-width: 1.0;"/><polygon fill="#191919" points="275.9,39,266.9,35,270.9,39,266.9,43,275.9,39" style="stroke: #191919; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="37" x="231.2069" y="51.8472">Prop2</text><!--MD5=[3dc47ac65825e656ba35c49a288040a8]
+@startuml
+skinparam BackgroundColor F9F9F9
+skinparam shadowing false
+skinparam RoundCorner 7
+skinparam ArrowColor 191919
+skinparam FontColor 191919
+skinparam SequenceLifeLineBorderColor 393939
+skinparam SequenceGroupHeaderFontColor 191919
+skinparam SequenceGroupFontColor 393939
+skinparam SequenceGroupBorderColor 393939
+skinparam SequenceGroupBorderThickness 1
+
+skinparam sequenceDivider {
+    BorderColor 191919
+    BorderThickness 1
+    FontColor 191919
+}
+
+skinparam participant {
+    BackgroundColor E55756
+    BorderColor 191919
+    FontColor F9F9F9
+    BorderThickness 1.5
+}
+
+skinparam database {
+    BackgroundColor A4DBD8
+    BorderColor 191919
+    FontColor 191919
+}
+
+skinparam entity {
+    BackgroundColor EFBABC
+    BorderColor 191919
+    FontColor 191919
+}
+
+skinparam note {
+    BackgroundColor e5e5e5
+    BorderColor 191919
+    FontColor 191919
+    BorderThickness 1.5
+}
+
+skinparam actor {
+    BackgroundColor 191919
+    BorderColor 191919
+    FontColor 191919
+}
+
+skinparam boundary {
+    BackgroundColor EFBABC
+    BorderColor 191919
+    FontColor 191919
+}
+
+skinparam control {
+    BackgroundColor EFBABC
+    BorderColor 191919
+    FontColor 191919
+}
+
+skinparam collections {
+    BackgroundColor E55756
+    BorderColor 191919
+    FontColor 191919
+    BorderThickness 1.5
+}
+
+skinparam queue {
+    BackgroundColor E55756
+    BorderColor 191919
+    FontColor FFF
+    BorderThickness 1.5
+}
+
+skinparam class {
+    BackgroundColor F1F1F1
+    BorderColor BBBBBB
+}
+left to right direction
+class ClassA {
+}
+class Type1 {
+    + Value1 : int <<get>> <<set>>
+}
+class Type2 {
+    + String1 : string <<get>> <<set>>
+}
+class "IList`1"<T> {
+}
+ClassA o-> "Strings<string>" "IList`1"
+Type2 - -> "Prop2" ExternalType
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 10:22:07 UTC 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.18+8
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>
