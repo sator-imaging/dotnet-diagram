@@ -8,14 +8,11 @@ branding:
   color: 'purple'
 
 inputs:
-  projects:
-    description: 'Glob for csproj files'
-    default: '**/*.csproj'
-  output-folder:
-    description: 'Output folder'
+  output-dir:
+    description: 'Relative output directory'
     default: 'UML'
-  fallback-to-cs:
-    description: 'Fallback to .cs files if no csproj found'
+  embed-svg:
+    description: 'Embed SVG in README as base64 data URI'
     default: 'true'
 
 outputs:
@@ -44,12 +41,11 @@ runs:
       run: |
         export PATH="$PATH:$HOME/.dotnet/tools"
         bash $GITHUB_ACTION_PATH/entrypoint.sh \
-          "${{ inputs.projects }}" \
-          "${{ inputs.output-folder }}" \
-          "${{ inputs.fallback-to-cs }}"
+          "${{ inputs.output-dir }}" \
+          "${{ inputs.embed-svg }}"
 
     - name: Set output
       id: set-output
       shell: bash
       run: |
-        echo "readme=${{ inputs.output-folder }}/README.md" >> $GITHUB_OUTPUT
+        echo "readme=${{ inputs.output-dir }}/README.md" >> $GITHUB_OUTPUT

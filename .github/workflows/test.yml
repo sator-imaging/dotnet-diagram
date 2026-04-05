@@ -3,13 +3,19 @@ name: Test
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - '**/*.cs'
+      - '**/*.csproj'
   pull_request:
     branches: [ "main" ]
+    paths:
+      - '**/*.cs'
+      - '**/*.csproj'
   workflow_dispatch:
 
 jobs:
   test:
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
 
     # Permissions required for creating PR
     permissions:
@@ -21,6 +27,8 @@ jobs:
       
       - id: diagram
         uses: ./
+        with:
+          embed-svg: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
 
 
       - name: Step Summary
