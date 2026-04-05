@@ -1,13 +1,12 @@
 #!/bin/bash
 set -e
 
-projects_glob="${1:-**/*.csproj}"
-output_folder="${2:-UML}"
-fallback="${3:-true}"
+output_folder="${1:-UML}"
+embed_svg="${2:-true}"
 
 mkdir -p "$output_folder"
 
-csproj_list=$(find . -name "$(basename "$projects_glob")")
+csproj_list=$(find . -name "*.csproj")
 
 generated_any=false
 
@@ -50,7 +49,7 @@ fi
 # =========================
 # Fallback to .cs files
 # =========================
-if [ "$generated_any" = false ] && [ "$fallback" = "true" ]; then
+if [ "$generated_any" = false ]; then
     echo "⚠ No csproj → fallback to .cs"
 
     cs_dirs=$(
@@ -125,7 +124,12 @@ for svg in "$output_folder"/*.svg; do
     echo "# $name" >> "$README"
     echo "" >> "$README"
 
-    echo "![${name}](${name}.svg)" >> "$README"
+    if [ "$embed_svg" = "true" ]; then
+        svg_base64=$(base64 "$svg" | tr -d '\n')
+        echo "![${name}](data:image/svg+xml;base64,${svg_base64})" >> "$README"
+    else
+        echo "![${name}](${name}.svg)" >> "$README"
+    fi
     echo "" >> "$README"
     echo "<details>" >> "$README"
     echo "<summary>PlantUML</summary>" >> "$README"

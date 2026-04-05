@@ -14,16 +14,22 @@ Generates UML+SVG Class Diagrams per `.csproj`
 
 `dotnet-diagram` generates `README.md` and corresponding files to output folder (defaults to `UML`).
 
-The following example writes README content including embedded `mermaid` diagrams and diffs to GitHub action step summary, and then create PR if the event is invoked by "push to main branch".
+The following example writes README content including embedded SVG on pull requests and diffs to GitHub action step summary, and then creates a PR when the event is a push to `main`.
 
 ```yaml
 name: 'Generate Class Diagrams'
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+    paths:
+      - '**/*.cs'
+      - '**/*.csproj'
   pull_request:
+    branches: [ "main" ]
+    paths:
+      - '**/*.cs'
+      - '**/*.csproj'
   workflow_dispatch:
 
 jobs:
@@ -41,6 +47,8 @@ jobs:
 
       - id: diagram
         uses: sator-imaging/dotnet-diagram@v1
+        with:
+          embed-svg: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
 
 
       - name: Step Summary
