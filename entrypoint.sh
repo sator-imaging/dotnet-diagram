@@ -15,14 +15,8 @@ generate_diagram() {
     local diagram_name="$2"
     local uml_file="$output_folder/$diagram_name.uml"
     local temp_dir
-    local script_dir
-    local theme_file
-    local temp_render_file
 
     temp_dir=$(mktemp -d /tmp/dotnet-diagram.XXXXXX)
-    script_dir=$(cd "$(dirname "$0")" && pwd)
-    theme_file="$script_dir/themes/$theme.puml"
-    temp_render_file="$temp_dir/$diagram_name.render.puml"
 
     puml-gen "$source_dir" "$temp_dir" -dir -allInOne \
       -createAssociation -excludePaths bin,obj,Properties -public \
@@ -30,20 +24,7 @@ generate_diagram() {
 
     if [ -f "$temp_dir/include.puml" ]; then
         mv "$temp_dir/include.puml" "$uml_file"
-        if [ -f "$theme_file" ]; then
-            {
-                echo "@startuml"
-                echo "!include $theme_file"
-                sed '1d;$d' "$uml_file"
-                echo "@enduml"
-            } > "$temp_render_file"
-            plantuml -tsvg "$temp_render_file" || echo "⚠ svg generation failed: $diagram_name"
-            if [ -f "$temp_dir/$diagram_name.render.svg" ]; then
-                mv "$temp_dir/$diagram_name.render.svg" "$output_folder/$diagram_name.svg"
-            fi
-        else
-            plantuml -tsvg --theme "$theme" "$uml_file" || echo "⚠ svg generation failed: $diagram_name"
-        fi
+        plantuml --theme "$theme" -tsvg "$uml_file" || echo "⚠ svg generation failed: $diagram_name"
         generated_any=true
     fi
 
