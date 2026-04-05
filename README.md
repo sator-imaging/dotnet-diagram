@@ -100,6 +100,7 @@ jobs:
 | --- | --- | --- |
 | `output-dir` | `UML` | Relative output directory for generated files. |
 | `theme` | `mars` | PlantUML CLI theme used during SVG rendering. |
+| `left-to-right` | `true` | Insert `left to right direction` into generated UML before rendering. |
 
 | Output | Description |
 | --- | --- |

@@ -14,6 +14,9 @@ inputs:
   theme:
     description: 'PlantUML theme name'
     default: 'mars'
+  left-to-right:
+    description: 'Use left-to-right UML layout'
+    default: 'true'
 
 outputs:
   readme-path:
@@ -48,7 +51,8 @@ runs:
         export PATH="$PATH:$HOME/.dotnet/tools"
         bash $GITHUB_ACTION_PATH/entrypoint.sh \
           "${{ inputs.output-dir }}" \
-          "${{ inputs.theme }}"
+          "${{ inputs.theme }}" \
+          "${{ inputs.left-to-right }}"
 
     - name: Set output
       id: set-output

@@ -3,6 +3,7 @@ set -e
 
 output_folder="${1:-UML}"
 theme="${2:-mars}"
+left_to_right="${3:-true}"
 
 mkdir -p "$output_folder"
 
@@ -10,13 +11,41 @@ csproj_list=$(find . -name "*.csproj")
 
 generated_any=false
 
+apply_layout() {
+    local uml_file="$1"
+    local layout_file
+
+    if [ "$left_to_right" != "true" ]; then
+        return
+    fi
+
+    layout_file=$(mktemp /tmp/dotnet-diagram-layout.XXXXXX)
+
+    awk '
+        NR == 1 && $0 == "@startuml" {
+            print
+            print "left to right direction"
+            next
+        }
+        { print }
+    ' "$uml_file" > "$layout_file"
+
+    mv "$layout_file" "$uml_file"
+}
+
 generate_diagram() {
     local source_dir="$1"
     local diagram_name="$2"
     local uml_file="$output_folder/$diagram_name.uml"
     local temp_dir
+    local render_file
+    local theme_file
+    local script_dir
 
     temp_dir=$(mktemp -d /tmp/dotnet-diagram.XXXXXX)
+    render_file="$uml_file"
+    script_dir=$(cd "$(dirname "$0")" && pwd)
+    theme_file="$script_dir/themes/$theme.puml"
 
     puml-gen "$source_dir" "$temp_dir" -dir -allInOne \
       -createAssociation -excludePaths bin,obj,Properties -public \
@@ -24,7 +53,20 @@ generate_diagram() {
 
     if [ -f "$temp_dir/include.puml" ]; then
         mv "$temp_dir/include.puml" "$uml_file"
-        plantuml --theme "$theme" -tsvg "$uml_file" || echo "⚠ svg generation failed: $diagram_name"
+        apply_layout "$uml_file"
+        if [ -f "$theme_file" ]; then
+            render_file="$temp_dir/$diagram_name.render.puml"
+            {
+                echo "@startuml"
+                echo "!include $theme_file"
+                sed '1d;$d' "$uml_file"
+                echo "@enduml"
+            } > "$render_file"
+        fi
+        plantuml -tsvg "$render_file" || echo "⚠ svg generation failed: $diagram_name"
+        if [ -f "$temp_dir/$diagram_name.render.svg" ]; then
+            mv "$temp_dir/$diagram_name.render.svg" "$output_folder/$diagram_name.svg"
+        fi
         generated_any=true
     fi
 
