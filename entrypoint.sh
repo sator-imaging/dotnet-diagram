@@ -34,6 +34,19 @@ apply_layout() {
     mv "$layout_file" "$uml_file"
 }
 
+delete_empty_uml() {
+    local uml_file="$1"
+    local normalized_content
+
+    [ -f "$uml_file" ] || return
+
+    normalized_content=$(sed '/^[[:space:]]*$/d' "$uml_file")
+
+    if [ -z "$normalized_content" ] || [ "$normalized_content" = $'@startuml\n@enduml' ]; then
+        rm -f "$uml_file"
+    fi
+}
+
 generate_diagram() {
     local source_dir="$1"
     local diagram_name="$2"
@@ -59,6 +72,11 @@ generate_diagram() {
 
     if [ -f "$temp_dir/include.puml" ]; then
         mv "$temp_dir/include.puml" "$uml_file"
+        delete_empty_uml "$uml_file"
+        if [ ! -f "$uml_file" ]; then
+            rm -rf "$temp_dir"
+            return
+        fi
         apply_layout "$uml_file"
         if [ -f "$theme_file" ]; then
             render_file="$temp_dir/$diagram_name.render.puml"
