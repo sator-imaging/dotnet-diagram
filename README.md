@@ -73,7 +73,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TIMESTAMP=$(date +'%Y%m%d%H%M%S')
-          BRANCH="auto/diagram-update-$TIMESTAMP"
+          BRANCH="bot/dotnet-diagram-$TIMESTAMP"
 
           git config user.name  "github-actions"
           git config user.email "github-actions@github.com"
